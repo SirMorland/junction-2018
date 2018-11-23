@@ -16,6 +16,11 @@ public class PlayerController : MonoBehaviour
 	private bool grounded = false;
 	private bool doubleJump = false;
 
+	private Vector2 BELOW = new Vector2(0f, -0.01f);
+
+	const int DEFAULT_LAYER = 0;
+	const int GHOST_LAYER = 8;
+
 	void Start ()
 	{
 		rigidbody2d = GetComponent<Rigidbody2D>();
@@ -33,22 +38,35 @@ public class PlayerController : MonoBehaviour
 			if (grounded) grounded = false;
 			else doubleJump = false;
 		}
+
+		if(Input.GetAxis("Vertical-" + player) > 0.5f && grounded)
+		{
+			gameObject.layer = GHOST_LAYER;
+			grounded = false;
+			StartCoroutine(StopGhosting());
+		}
 	}
 
 	void FixedUpdate()
 	{
 		rigidbody2d.velocity = new Vector2(move * speed, rigidbody2d.velocity.y);
 
-		Vector2 below = new Vector2(0f, -0.01f);
 
-		if (!grounded && Physics2D.Raycast((Vector2)transform.position + below, Vector2.down, 0.01f))
+		if (!grounded && Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.01f))
 		{
 			grounded = true;
 			doubleJump = canDoubleJump;
 		}
-		if (grounded && !Physics2D.Raycast((Vector2)transform.position + below, Vector2.down, 0.01f))
+		if (grounded && !Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.01f))
 		{
 			grounded = false;
 		}
+	}
+
+	IEnumerator StopGhosting()
+	{
+		yield return new WaitForSeconds(0.2f);
+
+		gameObject.layer = DEFAULT_LAYER;
 	}
 }
