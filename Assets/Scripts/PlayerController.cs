@@ -7,6 +7,8 @@ public class PlayerController : MonoBehaviour
 {
 	public int player;
 
+	public int maxHealth;
+	public int health;
 	public float speed;
 	public float jumpForce;
 	public bool canDoubleJump;
@@ -22,7 +24,7 @@ public class PlayerController : MonoBehaviour
     public float dashForce;
     public bool canDash = false;
     public float lastMove = 1f;
-    private bool dashing = false;
+	private DashState dashState = DashState.CAN_DASH;
     
 	private Vector2 BELOW = new Vector2(0f, -0.01f);
 
@@ -32,13 +34,15 @@ public class PlayerController : MonoBehaviour
 	void Start ()
 	{
 		rigidbody2d = GetComponent<Rigidbody2D>();
+
+		health = maxHealth;
 	}
 	
 	void Update ()
 	{
 		move = Input.GetAxis("Horizontal-" + player);
-        if (move < 0) lastMove = -1f;
-        else if (move > 0 )lastMove = 1f;
+        if (move < 0.01f) lastMove = -1f;
+        else if (move > 0.01f )lastMove = 1f;
         
 
 		if(Input.GetButtonDown("Jump-" + player) && (grounded || doubleJump))
@@ -59,22 +63,14 @@ public class PlayerController : MonoBehaviour
 			StartCoroutine(StopGhosting());
 		}
 
-        if(Input.GetButtonDown("Dash-"+player) && canDash)
+        if(Input.GetAxis("Dash-" + player) > 0 && canDash && dashState == DashState.CAN_DASH)
         {
-            //rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0f);
-            
-            dashing = true;
+            dashState = DashState.DASHING;
             rigidbody2d.AddForce(new Vector2(dashForce * lastMove, 0f), ForceMode2D.Impulse);
             StartCoroutine(StopDashing());
-            
-
-            //rigidbody2d.gravityScale = mass
-            //Debug.Log("vittu");
-            //rigidbody2d.velocity = new Vector2(100f,0);
-
         }
 
-		if(transform.position.y < -20f)
+		if(health <= 0 || transform.position.y < -20f)
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
 		}
@@ -83,7 +79,7 @@ public class PlayerController : MonoBehaviour
 	void FixedUpdate()
 	{
 
-        if (!dashing)
+        if (dashState != DashState.DASHING)
         {
 		    rigidbody2d.velocity = new Vector2(move * speed, rigidbody2d.velocity.y);
         }
@@ -117,6 +113,15 @@ public class PlayerController : MonoBehaviour
     {
         yield return new WaitForSeconds(0.1f);
 
-        dashing = false;
-    }
+        dashState = DashState.WAITING;
+
+		yield return new WaitForSeconds(1f);
+
+		dashState = DashState.CAN_DASH;
+	}
+
+	enum DashState
+	{
+		CAN_DASH, DASHING, WAITING
+	}
 }
