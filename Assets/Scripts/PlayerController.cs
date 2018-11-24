@@ -10,6 +10,8 @@ public class PlayerController : MonoBehaviour
 	public float speed;
 	public float jumpForce;
 	public bool canDoubleJump;
+	public float mass;
+	public float fallMultiplier;
 
 	private Rigidbody2D rigidbody2d;
 
@@ -36,6 +38,8 @@ public class PlayerController : MonoBehaviour
 			rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0f);
 			rigidbody2d.AddForce(new Vector2(0f, jumpForce), ForceMode2D.Impulse);
 
+			rigidbody2d.gravityScale = mass;
+
 			if (grounded) grounded = false;
 			else doubleJump = false;
 		}
@@ -57,11 +61,17 @@ public class PlayerController : MonoBehaviour
 	{
 		rigidbody2d.velocity = new Vector2(move * speed, rigidbody2d.velocity.y);
 
+		if(rigidbody2d.velocity.y < 0)
+		{
+			rigidbody2d.gravityScale = mass * fallMultiplier;
+		}
 
 		if (!grounded && Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.01f))
 		{
 			grounded = true;
 			doubleJump = canDoubleJump;
+
+			rigidbody2d.gravityScale = mass;
 		}
 		if (grounded && !Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.01f))
 		{
