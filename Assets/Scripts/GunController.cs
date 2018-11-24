@@ -7,7 +7,7 @@ public class GunController : MonoBehaviour
 	public GameObject bullet;
 
 	public float fireRate;
-	public float spread;
+	public float accuracy;
 	public int bullets;
 
 	private int player;
@@ -32,6 +32,8 @@ public class GunController : MonoBehaviour
 		float currentTime = Time.time;
 		if(Input.GetButton("Shoot-" + player) && currentTime - lastTime > fireRate)
 		{
+            float spread = 20f - accuracy;
+            if (spread < 0f) spread = 0f;
 			for (int i = 0; i < bullets; i++)
 			{
 				GameObject newBullet = Instantiate(bullet);
