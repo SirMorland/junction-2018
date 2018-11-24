@@ -17,7 +17,6 @@ public class PlayerController : MonoBehaviour
 
 	private Rigidbody2D rigidbody2d;
 	private Animator animator;
-	private SpriteRenderer spriteRenderer;
 
 	private float move = 0f;
 	private bool grounded = false;
@@ -36,7 +35,6 @@ public class PlayerController : MonoBehaviour
 	{
 		rigidbody2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
-		spriteRenderer = GetComponent<SpriteRenderer>();
 
 		health = maxHealth;
 	}
@@ -47,12 +45,12 @@ public class PlayerController : MonoBehaviour
 		if (move < -0.1f)
 		{
 			animator.SetBool("Running", true);
-			spriteRenderer.flipX = true;
+			transform.localScale = new Vector3(-1f, 1f, 1f);
 		}
 		else if (move > 0.1f)
 		{
 			animator.SetBool("Running", true);
-			spriteRenderer.flipX = false;
+			transform.localScale = new Vector3(1f, 1f, 1f);
 		}
 		else
 		{

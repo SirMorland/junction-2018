@@ -10,12 +10,17 @@ public class GunController : MonoBehaviour
 	public float accuracy;
 	public int bullets;
 
+	private SpriteRenderer spriteRenderer;
+	private Transform playerTransform;
+
 	private int player;
 	private float lastTime;
 
 	void Start ()
 	{
 		player = transform.parent.GetComponent<PlayerController>().player;
+		playerTransform = transform.parent;
+		spriteRenderer = GetComponent<SpriteRenderer>();
 		lastTime = Time.time;
 	}
 	
@@ -26,7 +31,26 @@ public class GunController : MonoBehaviour
 
 		if (horizontal != 0 || vertical != 0)
 		{
-			transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Round(Mathf.Rad2Deg * Mathf.Atan2(vertical, horizontal)/45f)* 45f);
+			float angle = Mathf.Round(Mathf.Rad2Deg * Mathf.Atan2(vertical, horizontal) / 45f) * 45f;
+			transform.rotation = Quaternion.Euler(0f, 0f, angle);
+			
+			if(angle <= 90 && angle > -90)
+			{
+				spriteRenderer.flipY = false;
+			}
+			else
+			{
+				spriteRenderer.flipY = true;
+			}
+		}
+
+		if(playerTransform.localScale.x > -1)
+		{
+			spriteRenderer.flipX = false;
+		}
+		else
+		{
+			spriteRenderer.flipX = true;
 		}
 
 		float currentTime = Time.time;
@@ -39,7 +63,7 @@ public class GunController : MonoBehaviour
 				GameObject newBullet = Instantiate(bullet);
 				newBullet.transform.rotation = transform.rotation;
 				newBullet.transform.position = transform.position;
-				newBullet.transform.Translate(1.1f, 0f, 0f);
+				newBullet.transform.Translate(0.75f, 0f, 0f);
 				newBullet.transform.Rotate(0f, 0f, Random.Range(-spread, spread));
 				lastTime = currentTime;
 			}
