@@ -224,9 +224,13 @@ MonoBehaviour:
   health: 0
   speed: 8
   jumpForce: 1800
+  canJump: 1
   canDoubleJump: 1
   mass: 1
   fallMultiplier: 1.8
+  sizeMultiplier: 1
+  invertVertical: 0
+  invertHorizontal: 0
   dashForce: 1750
   canDash: 1
 --- !u!50 &66843808
@@ -366,7 +370,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 87454439}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: -0.156, y: 0.171, z: 0}
+  m_LocalPosition: {x: -0.16, y: 0.192, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1476810757}
@@ -429,10 +433,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f4d4e5ae658704cbe0180f335ccd2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guns: []
   bullet: {fileID: 1147073305690848, guid: 834e5509256819140a585f56e1426bb8, type: 2}
   fireRate: 0.2
-  accuracy: 0
+  accuracy: 20
   bullets: 1
+  damage: 2
+  bulletSpeed: 35
 --- !u!1 &146013456
 GameObject:
   m_ObjectHideFlags: 0
@@ -1284,9 +1291,13 @@ MonoBehaviour:
   health: 0
   speed: 8
   jumpForce: 1800
+  canJump: 1
   canDoubleJump: 1
   mass: 1
   fallMultiplier: 1.8
+  sizeMultiplier: 1
+  invertVertical: 0
+  invertHorizontal: 0
   dashForce: 1750
   canDash: 1
 --- !u!95 &1476810761
@@ -1348,10 +1359,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f4d4e5ae658704cbe0180f335ccd2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guns: []
   bullet: {fileID: 1147073305690848, guid: 834e5509256819140a585f56e1426bb8, type: 2}
   fireRate: 0.2
-  accuracy: 0
+  accuracy: 20
   bullets: 1
+  damage: 2
+  bulletSpeed: 35
 --- !u!212 &1728025737
 SpriteRenderer:
   m_ObjectHideFlags: 0

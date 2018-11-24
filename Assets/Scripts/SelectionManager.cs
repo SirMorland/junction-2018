@@ -5,6 +5,7 @@ using System.Linq;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 public class SelectionManager : MonoBehaviour {
 
@@ -162,7 +163,24 @@ public class SelectionManager : MonoBehaviour {
                 }
                 else
                 {
-                    //Siirry peliin
+					switch(GameObject.Find("Stats-" + player).GetComponent<PlayerStats>().map)
+					{
+						case "Open":
+							SceneManager.LoadScene("Map1");
+							break;
+						case "Less platforms but more walls":
+							SceneManager.LoadScene("Map2");
+							break;
+						case "Maze":
+							SceneManager.LoadScene("map3");
+							break;
+						case "More platforms but less walls":
+							SceneManager.LoadScene("map4");
+							break;
+						default:
+							SceneManager.LoadScene(0);
+							break;
+					}
                 }
             }
             

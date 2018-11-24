@@ -1363,11 +1363,8 @@ MonoBehaviour:
   - {fileID: 1291196242}
   - {fileID: 1810850437}
   - {fileID: 1626891041}
-  - {fileID: 0}
-  - {fileID: 0}
   mapPairs:
   - {fileID: 19033015}
-  - {fileID: 0}
   - {fileID: 1552964481}
   cardPairs:
   - {fileID: 1230474240}
@@ -1378,8 +1375,6 @@ MonoBehaviour:
   - {fileID: 1839245909}
   - {fileID: 492733749}
   - {fileID: 1327825938}
-  - {fileID: 0}
-  - {fileID: 0}
   player: 1
 --- !u!1 &1552964481
 GameObject:

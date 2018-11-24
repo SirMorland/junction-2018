@@ -5,7 +5,7 @@ using UnityEngine;
 public class BulletController : MonoBehaviour
 {
 	public float speed;
-	public int damage;
+	public float damage;
 
 	void Start ()
 	{
@@ -16,7 +16,7 @@ public class BulletController : MonoBehaviour
 	{
 		if (collision.collider.tag == "Player")
 		{
-			collision.collider.GetComponent<PlayerController>().health -= damage;
+			collision.collider.GetComponent<PlayerController>().health -= Mathf.RoundToInt(damage);
 		}
 
 		Destroy(gameObject);
