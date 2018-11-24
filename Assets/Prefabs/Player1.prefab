@@ -23,6 +23,7 @@ GameObject:
   - component: {fileID: 70662913304415174}
   - component: {fileID: 50016429465739178}
   - component: {fileID: 114025553286069532}
+  - component: {fileID: 95979873910220628}
   m_Layer: 0
   m_Name: Player1
   m_TagString: Player
@@ -54,7 +55,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1085211543522690}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0.255, y: -1.822, z: 0}
+  m_LocalPosition: {x: -5, y: -3, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 4598928104861684}
@@ -68,7 +69,7 @@ Transform:
   m_PrefabInternal: {fileID: 100100000}
   m_GameObject: {fileID: 1331010001797902}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1, z: 0}
+  m_LocalPosition: {x: -0.16, y: 0.192, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 4278666780870038}
@@ -109,6 +110,24 @@ CapsuleCollider2D:
   m_Offset: {x: 0, y: 0.4}
   m_Size: {x: 0.4, y: 0.8}
   m_Direction: 0
+--- !u!95 &95979873910220628
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 1
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 100100000}
+  m_GameObject: {fileID: 1085211543522690}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: bd986467568df224485d6bbc03890615, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!114 &114025553286069532
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -121,15 +140,19 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
-  maxHealth: 0
-  health: 0
+  maxHealth: 10
+  health: 10
   speed: 4
   jumpForce: 1200
+  canJump: 1
   canDoubleJump: 0
   mass: 1
   fallMultiplier: 1.6
+  sizeMultiplier: 1
+  invertVertical: 0
+  invertHorizontal: 0
   dashForce: 600
-  canDash: 1
+  canDash: 0
 --- !u!114 &114298055876111084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -141,10 +164,19 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a0f4d4e5ae658704cbe0180f335ccd2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  guns:
+  - {fileID: 21300000, guid: 3b0d76f2e7d5bcd49a976e323f59f819, type: 3}
+  - {fileID: 21300002, guid: 3b0d76f2e7d5bcd49a976e323f59f819, type: 3}
+  - {fileID: 21300004, guid: 3b0d76f2e7d5bcd49a976e323f59f819, type: 3}
+  - {fileID: 21300006, guid: 3b0d76f2e7d5bcd49a976e323f59f819, type: 3}
+  - {fileID: 21300012, guid: 3b0d76f2e7d5bcd49a976e323f59f819, type: 3}
+  - {fileID: 21300010, guid: 3b0d76f2e7d5bcd49a976e323f59f819, type: 3}
   bullet: {fileID: 1147073305690848, guid: 834e5509256819140a585f56e1426bb8, type: 2}
   fireRate: 0.2
-  accuracy: 0
+  accuracy: 20
   bullets: 1
+  damage: 2
+  bulletSpeed: 35
 --- !u!212 &212095821569955604
 SpriteRenderer:
   m_ObjectHideFlags: 1

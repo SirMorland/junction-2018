@@ -102,7 +102,15 @@ public class PlayerController : MonoBehaviour
 
 		if(health <= 0 || transform.position.y < -20f)
 		{
-			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+			health = 0;
+
+			Destroy(transform.GetChild(0).gameObject);
+			animator.SetTrigger("Die");
+
+			StartCoroutine(EndRound());
+
+			rigidbody2d.bodyType = RigidbodyType2D.Static;
+			enabled = false;
 		}
 	}
 
@@ -170,6 +178,16 @@ public class PlayerController : MonoBehaviour
 		yield return new WaitForSeconds(1f);
 
 		dashState = DashState.CAN_DASH;
+	}
+
+	IEnumerator EndRound()
+	{
+		Destroy(GameObject.Find("Stats-1"));
+		Destroy(GameObject.Find("Stats-2"));
+
+		yield return new WaitForSeconds(4f);
+
+		SceneManager.LoadScene(0);
 	}
 
 	enum DashState
