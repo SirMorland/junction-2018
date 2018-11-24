@@ -86,7 +86,8 @@ public class PlayerController : MonoBehaviour
 				new Vector2(dashForce * -Mathf.Sign(Input.GetAxis("Dash-" + player)), 0f),
 				ForceMode2D.Impulse
 			);
-            StartCoroutine(StopDashing());
+			animator.SetBool("Dashing", true);
+			StartCoroutine(StopDashing());
         }
 
 		if(health <= 0 || transform.position.y < -20f)
@@ -114,10 +115,12 @@ public class PlayerController : MonoBehaviour
 			doubleJump = canDoubleJump;
 
 			rigidbody2d.gravityScale = mass;
+			animator.SetBool("Jumping", false);
 		}
 		if (grounded && !Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.01f))
 		{
 			grounded = false;
+			animator.SetBool("Jumping", true);
 		}
 	}
 
@@ -133,6 +136,7 @@ public class PlayerController : MonoBehaviour
         yield return new WaitForSeconds(0.1f);
 
         dashState = DashState.WAITING;
+		animator.SetBool("Dashing", false);
 
 		yield return new WaitForSeconds(1f);
 
