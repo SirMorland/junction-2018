@@ -181,7 +181,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 19033016}
-  - {fileID: 1313936966}
   - {fileID: 1552964482}
   m_Father: {fileID: 0}
   m_RootOrder: 10
@@ -383,8 +382,6 @@ Transform:
   - {fileID: 1291196243}
   - {fileID: 1810850438}
   - {fileID: 1626891042}
-  - {fileID: 1290731752}
-  - {fileID: 1846093549}
   m_Father: {fileID: 0}
   m_RootOrder: 8
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -565,7 +562,7 @@ GameObject:
   - component: {fileID: 844063216}
   - component: {fileID: 844063215}
   m_Layer: 0
-  m_Name: Background Black
+  m_Name: Background Left
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -774,48 +771,6 @@ CanvasRenderer:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 955334910}
   m_CullTransparentMesh: 0
---- !u!1 &1071250169
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1071250170}
-  - component: {fileID: 1071250171}
-  m_Layer: 0
-  m_Name: SmartDumb
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1071250170
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1071250169}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1663447523}
-  m_RootOrder: 9
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1071250171
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1071250169}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choice1: Smart
-  choice2: Dumb
 --- !u!1 &1152096701
 GameObject:
   m_ObjectHideFlags: 0
@@ -897,7 +852,7 @@ GameObject:
   - component: {fileID: 1193246085}
   - component: {fileID: 1193246084}
   m_Layer: 0
-  m_Name: Background White
+  m_Name: Background Right
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1159,48 +1114,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choice1: More damage but bigger size
   choice2: Less damage but smaller size
---- !u!1 &1290731751
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1290731752}
-  - component: {fileID: 1290731753}
-  m_Layer: 0
-  m_Name: ClubFling
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1290731752
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1290731751}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 555045179}
-  m_RootOrder: 4
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1290731753
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1290731751}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choice1: Club
-  choice2: Fling
 --- !u!1 &1291196242
 GameObject:
   m_ObjectHideFlags: 0
@@ -1243,48 +1156,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choice1: Shotgun
   choice2: Assault rifle
---- !u!1 &1313936965
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1313936966}
-  - component: {fileID: 1313936967}
-  m_Layer: 0
-  m_Name: WideHigh
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1313936966
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1313936965}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 43260611}
-  m_RootOrder: 1
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1313936967
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1313936965}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choice1: Wide
-  choice2: High
 --- !u!1 &1327825938
 GameObject:
   m_ObjectHideFlags: 0
@@ -1326,6 +1197,48 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   choice1: 'More accuracy '
+  choice2: More speed
+--- !u!1 &1383546926
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1383546927}
+  - component: {fileID: 1383546928}
+  m_Layer: 0
+  m_Name: DashSpeed
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1383546927
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1383546926}
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 1663447523}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1383546928
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 1383546926}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  choice1: Dash
   choice2: More speed
 --- !u!1 &1392562425
 GameObject:
@@ -1450,11 +1363,11 @@ MonoBehaviour:
   - {fileID: 1291196242}
   - {fileID: 1810850437}
   - {fileID: 1626891041}
-  - {fileID: 1290731751}
-  - {fileID: 1846093548}
+  - {fileID: 0}
+  - {fileID: 0}
   mapPairs:
   - {fileID: 19033015}
-  - {fileID: 1313936965}
+  - {fileID: 0}
   - {fileID: 1552964481}
   cardPairs:
   - {fileID: 1230474240}
@@ -1465,8 +1378,8 @@ MonoBehaviour:
   - {fileID: 1839245909}
   - {fileID: 492733749}
   - {fileID: 1327825938}
-  - {fileID: 1960217711}
-  - {fileID: 1071250169}
+  - {fileID: 0}
+  - {fileID: 0}
   player: 1
 --- !u!1 &1552964481
 GameObject:
@@ -1495,7 +1408,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 43260611}
-  m_RootOrder: 2
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &1552964483
 MonoBehaviour:
@@ -1595,7 +1508,7 @@ GameObject:
   - component: {fileID: 1626891042}
   - component: {fileID: 1626891043}
   m_Layer: 0
-  m_Name: RailgunSword
+  m_Name: SniperShotgun
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1625,8 +1538,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choice1: Railgun
-  choice2: Sword
+  choice1: Sniper rifle
+  choice2: Shotgun
 --- !u!1 &1655472726
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,8 +1642,7 @@ Transform:
   - {fileID: 1839245910}
   - {fileID: 492733750}
   - {fileID: 1327825939}
-  - {fileID: 1960217712}
-  - {fileID: 1071250170}
+  - {fileID: 1383546927}
   m_Father: {fileID: 0}
   m_RootOrder: 9
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -1744,7 +1656,7 @@ GameObject:
   - component: {fileID: 1810850438}
   - component: {fileID: 1810850439}
   m_Layer: 0
-  m_Name: BoomerangRifle
+  m_Name: RailgunRifle
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1774,7 +1686,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choice1: Boomerang
+  choice1: Railgun
   choice2: Rifle
 --- !u!1 &1839245909
 GameObject:
@@ -1818,90 +1730,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   choice1: Double jump
   choice2: Dash
---- !u!1 &1846093548
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1846093549}
-  - component: {fileID: 1846093550}
-  m_Layer: 0
-  m_Name: RocketSniper
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1846093549
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1846093548}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 555045179}
-  m_RootOrder: 5
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1846093550
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1846093548}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choice1: Rocket launcher
-  choice2: Sniper rifle
---- !u!1 &1960217711
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1960217712}
-  - component: {fileID: 1960217713}
-  m_Layer: 0
-  m_Name: Beauty
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!4 &1960217712
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1960217711}
-  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_Children: []
-  m_Father: {fileID: 1663447523}
-  m_RootOrder: 8
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &1960217713
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 1960217711}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  choice1: Inner beauty
-  choice2: Outer beauty
 --- !u!1 &1981654568
 GameObject:
   m_ObjectHideFlags: 0
@@ -2087,7 +1915,7 @@ Canvas:
   m_RenderMode: 1
   m_Camera: {fileID: 1981654570}
   m_PlaneDistance: 100
-  m_PixelPerfect: 0
+  m_PixelPerfect: 1
   m_ReceivesEvents: 1
   m_OverrideSorting: 0
   m_OverridePixelPerfect: 0
