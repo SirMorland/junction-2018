@@ -8,12 +8,7 @@ public class BulletController : MonoBehaviour
 
 	void Start ()
 	{
-		
-	}
-	
-	void Update ()
-	{
-		transform.Translate(Time.deltaTime * speed, 0f, 0f);
+		GetComponent<Rigidbody2D>().velocity = transform.right * speed;
 	}
 
 	void OnCollisionEnter2D (Collision2D collision)

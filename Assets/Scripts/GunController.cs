@@ -7,6 +7,8 @@ public class GunController : MonoBehaviour
 	public GameObject bullet;
 
 	public float fireRate;
+	public float spread;
+	public int bullets;
 
 	private int player;
 	private float lastTime;
@@ -30,11 +32,15 @@ public class GunController : MonoBehaviour
 		float currentTime = Time.time;
 		if(Input.GetButton("Shoot-" + player) && currentTime - lastTime > fireRate)
 		{
-			GameObject newBullet = Instantiate(bullet);
-			newBullet.transform.rotation = transform.rotation;
-			newBullet.transform.position = transform.position;
-			newBullet.transform.Translate(1.1f, 0f, 0f);
-			lastTime = currentTime;
+			for (int i = 0; i < bullets; i++)
+			{
+				GameObject newBullet = Instantiate(bullet);
+				newBullet.transform.rotation = transform.rotation;
+				newBullet.transform.position = transform.position;
+				newBullet.transform.Translate(1.1f, 0f, 0f);
+				newBullet.transform.Rotate(0f, 0f, Random.Range(-spread, spread));
+				lastTime = currentTime;
+			}
 		}
 	}
 }

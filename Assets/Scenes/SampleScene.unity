@@ -127,7 +127,7 @@ GameObject:
   - component: {fileID: 66843807}
   m_Layer: 0
   m_Name: Player2
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -336,6 +336,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1147073305690848, guid: 834e5509256819140a585f56e1426bb8, type: 2}
   fireRate: 0.2
+  spread: 0
+  bullets: 1
 --- !u!1 &146013456
 GameObject:
   m_ObjectHideFlags: 0
@@ -903,7 +905,7 @@ GameObject:
   - component: {fileID: 1476810760}
   m_Layer: 0
   m_Name: Player1
-  m_TagString: Untagged
+  m_TagString: Player
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -1066,6 +1068,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1147073305690848, guid: 834e5509256819140a585f56e1426bb8, type: 2}
   fireRate: 0.2
+  spread: 0
+  bullets: 1
 --- !u!212 &1728025737
 SpriteRenderer:
   m_ObjectHideFlags: 0
