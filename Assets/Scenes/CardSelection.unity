@@ -766,7 +766,7 @@ MonoBehaviour:
     m_HorizontalOverflow: 1
     m_VerticalOverflow: 0
     m_LineSpacing: 1
-  m_Text: Player 1 choose your weapon
+  m_Text: Instruction
 --- !u!222 &955334913
 CanvasRenderer:
   m_ObjectHideFlags: 0
@@ -1452,7 +1452,10 @@ MonoBehaviour:
   - {fileID: 1626891041}
   - {fileID: 1290731751}
   - {fileID: 1846093548}
-  mapPairs: []
+  mapPairs:
+  - {fileID: 19033015}
+  - {fileID: 1313936965}
+  - {fileID: 1552964481}
   cardPairs:
   - {fileID: 1230474240}
   - {fileID: 1270076730}
@@ -1505,8 +1508,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 543d553f9348c444480ab70015b32e73, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  choice1: Platforms but no walls
-  choice2: Walls but no platforms
+  choice1: More platforms but less walls
+  choice2: Less platforms but more walls
 --- !u!1 &1620551716
 GameObject:
   m_ObjectHideFlags: 0
