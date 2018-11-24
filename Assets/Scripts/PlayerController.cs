@@ -19,6 +19,11 @@ public class PlayerController : MonoBehaviour
 	private bool grounded = false;
 	private bool doubleJump = false;
 
+    public float dashForce;
+    public bool canDash = false;
+    public float lastMove = 1f;
+    private bool dashing = false;
+    
 	private Vector2 BELOW = new Vector2(0f, -0.01f);
 
 	const int DEFAULT_LAYER = 0;
@@ -32,6 +37,9 @@ public class PlayerController : MonoBehaviour
 	void Update ()
 	{
 		move = Input.GetAxis("Horizontal-" + player);
+        if (move < 0) lastMove = -1f;
+        else if (move > 0 )lastMove = 1f;
+        
 
 		if(Input.GetButtonDown("Jump-" + player) && (grounded || doubleJump))
 		{
@@ -51,6 +59,21 @@ public class PlayerController : MonoBehaviour
 			StartCoroutine(StopGhosting());
 		}
 
+        if(Input.GetButtonDown("Dash-"+player) && canDash)
+        {
+            //rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0f);
+            
+            dashing = true;
+            rigidbody2d.AddForce(new Vector2(dashForce * lastMove, 0f), ForceMode2D.Impulse);
+            StartCoroutine(StopDashing());
+            
+
+            //rigidbody2d.gravityScale = mass
+            //Debug.Log("vittu");
+            //rigidbody2d.velocity = new Vector2(100f,0);
+
+        }
+
 		if(transform.position.y < -20f)
 		{
 			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
@@ -59,7 +82,11 @@ public class PlayerController : MonoBehaviour
 
 	void FixedUpdate()
 	{
-		rigidbody2d.velocity = new Vector2(move * speed, rigidbody2d.velocity.y);
+
+        if (!dashing)
+        {
+		    rigidbody2d.velocity = new Vector2(move * speed, rigidbody2d.velocity.y);
+        }
 
 		if(rigidbody2d.velocity.y < 0)
 		{
@@ -85,4 +112,11 @@ public class PlayerController : MonoBehaviour
 
 		gameObject.layer = DEFAULT_LAYER;
 	}
+
+    IEnumerator StopDashing()
+    {
+        yield return new WaitForSeconds(0.1f);
+
+        dashing = false;
+    }
 }

@@ -149,6 +149,9 @@ MonoBehaviour:
   canDoubleJump: 0
   mass: 1
   fallMultiplier: 1.8
+  dashForce: 0
+  canDash: 0
+  lastMove: 1
 --- !u!50 &66843808
 Rigidbody2D:
   serializedVersion: 4
@@ -1017,6 +1020,9 @@ MonoBehaviour:
   canDoubleJump: 0
   mass: 1
   fallMultiplier: 1.8
+  dashForce: 1750
+  canDash: 1
+  lastMove: 1
 --- !u!1 &1728025734
 GameObject:
   m_ObjectHideFlags: 0

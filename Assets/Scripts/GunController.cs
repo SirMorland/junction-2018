@@ -24,7 +24,7 @@ public class GunController : MonoBehaviour
 
 		if (horizontal != 0 || vertical != 0)
 		{
-			transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Rad2Deg * Mathf.Atan2(vertical, horizontal));
+			transform.rotation = Quaternion.Euler(0f, 0f, Mathf.Round(Mathf.Rad2Deg * Mathf.Atan2(vertical, horizontal)/45f)* 45f);
 		}
 
 		float currentTime = Time.time;

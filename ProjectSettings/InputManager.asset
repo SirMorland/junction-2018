@@ -198,11 +198,19 @@ InputManager:
     axis: 0
     joyNum: 2
   - serializedVersion: 3
+<<<<<<< Updated upstream
     m_Name: SelectCard-1
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 1 button 0
+=======
+    m_Name: Dash-1
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 1 button 2
+>>>>>>> Stashed changes
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -214,11 +222,19 @@ InputManager:
     axis: 0
     joyNum: 1
   - serializedVersion: 3
+<<<<<<< Updated upstream
     m_Name: SelectCard-2
     descriptiveName: 
     descriptiveNegativeName: 
     negativeButton: 
     positiveButton: joystick 2 button 0
+=======
+    m_Name: Dash-2
+    descriptiveName: 
+    descriptiveNegativeName: 
+    negativeButton: 
+    positiveButton: joystick 2 button 2
+>>>>>>> Stashed changes
     altNegativeButton: 
     altPositiveButton: 
     gravity: 1000
@@ -229,6 +245,7 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 2
+<<<<<<< Updated upstream
   - serializedVersion: 3
     m_Name: Submit
     descriptiveName: 
@@ -261,3 +278,5 @@ InputManager:
     type: 0
     axis: 0
     joyNum: 2
+=======
+>>>>>>> Stashed changes
