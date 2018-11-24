@@ -15,7 +15,8 @@ public class SelectionManager : MonoBehaviour {
     [SerializeField] private GameObject[] weaponPairs;
     [SerializeField] private GameObject[] mapPairs;
     [SerializeField] private List<GameObject> cardPairs;
-    
+
+    private Text instruction;
 
     private int choicesMade = 0;
     private int maxChoices = 6;
@@ -31,7 +32,10 @@ public class SelectionManager : MonoBehaviour {
 
 
         random = new System.Random();
-        //player = random.Next(1, 3); //Aloittava pelaaja valitaan satunnaisesti
+        player = random.Next(1, 3); //Aloittava pelaaja valitaan satunnaisesti
+
+        instruction = GameObject.Find("Instruction").GetComponent<Text>();
+        instruction.text = "Player " + player + " choose your weapon";
 
         int weaponChoiceN = random.Next(0, weaponPairs.Length);
         currentCards = weaponPairs[weaponChoiceN].GetComponent("CardChoice") as CardChoice;
@@ -64,6 +68,8 @@ public class SelectionManager : MonoBehaviour {
                 int mapChoiceN = random.Next(0, mapPairs.Length);
                 currentCards = mapPairs[mapChoiceN].GetComponent("CardChoice") as CardChoice;
 
+                instruction.text = "Player " + player + " choose the arena";
+
                 leftCard.GetComponentInChildren<Text>().text = currentCards.choice1;
                 rightCard.GetComponentInChildren<Text>().text = currentCards.choice2;
 
@@ -74,6 +80,9 @@ public class SelectionManager : MonoBehaviour {
                 GameObject.Find("Stats-" + player).GetComponent<PlayerStats>().map = selected.GetComponentInChildren<Text>().text;
                 player = nextPlayer();
                 GameObject.Find("Stats-" + player).GetComponent<PlayerStats>().map = selected.GetComponentInChildren<Text>().text;
+
+                choicesMade += 1;
+                getNewCards();
             }
             else
             {
@@ -173,6 +182,8 @@ public class SelectionManager : MonoBehaviour {
 
     private void getNewCards()
     {
+        instruction.text = "Player " + player + " make your choice";
+
         int choiceN = random.Next(0, cardPairs.Count);
 
         currentCards = cardPairs.ElementAt(choiceN).GetComponent("CardChoice") as CardChoice;
