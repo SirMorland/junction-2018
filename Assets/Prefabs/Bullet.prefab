@@ -115,7 +115,7 @@ TrailRenderer:
   m_SortingLayerID: 0
   m_SortingLayer: 0
   m_SortingOrder: 1
-  m_Time: 5
+  m_Time: 1
   m_Parameters:
     serializedVersion: 2
     widthMultiplier: 0.1
@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 00f23887b7462ad47bb839322f71ae2d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 25
+  speed: 35
   damage: 1
 --- !u!212 &212423746837172278
 SpriteRenderer:

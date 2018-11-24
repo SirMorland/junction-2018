@@ -1227,6 +1227,26 @@ Prefab:
       propertyPath: maxHealth
       value: 10
       objectReference: {fileID: 0}
+    - target: {fileID: 114025553286069532, guid: 535f231023f0fac4d998a361665bb0e2,
+        type: 2}
+      propertyPath: jumpForce
+      value: 1200
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025553286069532, guid: 535f231023f0fac4d998a361665bb0e2,
+        type: 2}
+      propertyPath: speed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025553286069532, guid: 535f231023f0fac4d998a361665bb0e2,
+        type: 2}
+      propertyPath: dashForce
+      value: 600
+      objectReference: {fileID: 0}
+    - target: {fileID: 114025553286069532, guid: 535f231023f0fac4d998a361665bb0e2,
+        type: 2}
+      propertyPath: fallMultiplier
+      value: 1.6
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 535f231023f0fac4d998a361665bb0e2, type: 2}
   m_IsPrefabAsset: 0

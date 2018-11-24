@@ -121,14 +121,15 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: 1
-  speed: 8
-  jumpForce: 1800
+  maxHealth: 0
+  health: 0
+  speed: 4
+  jumpForce: 1200
   canDoubleJump: 0
   mass: 1
-  fallMultiplier: 1.8
-  dashForce: 1750
+  fallMultiplier: 1.6
+  dashForce: 600
   canDash: 1
-  lastMove: 1
 --- !u!114 &114298055876111084
 MonoBehaviour:
   m_ObjectHideFlags: 1
@@ -142,7 +143,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   bullet: {fileID: 1147073305690848, guid: 834e5509256819140a585f56e1426bb8, type: 2}
   fireRate: 0.2
-  spread: 0
+  accuracy: 0
   bullets: 1
 --- !u!212 &212095821569955604
 SpriteRenderer:
