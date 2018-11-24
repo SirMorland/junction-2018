@@ -16,6 +16,8 @@ public class PlayerController : MonoBehaviour
 	public float fallMultiplier;
 
 	private Rigidbody2D rigidbody2d;
+	private Animator animator;
+	private SpriteRenderer spriteRenderer;
 
 	private float move = 0f;
 	private bool grounded = false;
@@ -23,7 +25,6 @@ public class PlayerController : MonoBehaviour
 
     public float dashForce;
     public bool canDash = false;
-    public float lastMove = 1f;
 	private DashState dashState = DashState.CAN_DASH;
     
 	private Vector2 BELOW = new Vector2(0f, -0.01f);
@@ -34,6 +35,8 @@ public class PlayerController : MonoBehaviour
 	void Start ()
 	{
 		rigidbody2d = GetComponent<Rigidbody2D>();
+		animator = GetComponent<Animator>();
+		spriteRenderer = GetComponent<SpriteRenderer>();
 
 		health = maxHealth;
 	}
@@ -41,9 +44,20 @@ public class PlayerController : MonoBehaviour
 	void Update ()
 	{
 		move = Input.GetAxis("Horizontal-" + player);
-        if (move < 0.01f) lastMove = -1f;
-        else if (move > 0.01f )lastMove = 1f;
-        
+		if (move < -0.1f)
+		{
+			animator.SetBool("Running", true);
+			spriteRenderer.flipX = true;
+		}
+		else if (move > 0.1f)
+		{
+			animator.SetBool("Running", true);
+			spriteRenderer.flipX = false;
+		}
+		else
+		{
+			animator.SetBool("Running", false);
+		}
 
 		if(Input.GetButtonDown("Jump-" + player) && (grounded || doubleJump))
 		{
@@ -63,10 +77,15 @@ public class PlayerController : MonoBehaviour
 			StartCoroutine(StopGhosting());
 		}
 
-        if(Input.GetAxis("Dash-" + player) > 0 && canDash && dashState == DashState.CAN_DASH)
+        if(Input.GetAxis("Dash-" + player) != 0 && canDash && dashState == DashState.CAN_DASH)
         {
+			Debug.Log(Input.GetAxis("Dash-" + player));
+
             dashState = DashState.DASHING;
-            rigidbody2d.AddForce(new Vector2(dashForce * lastMove, 0f), ForceMode2D.Impulse);
+            rigidbody2d.AddForce(
+				new Vector2(dashForce * -Mathf.Sign(Input.GetAxis("Dash-" + player)), 0f),
+				ForceMode2D.Impulse
+			);
             StartCoroutine(StopDashing());
         }
 
