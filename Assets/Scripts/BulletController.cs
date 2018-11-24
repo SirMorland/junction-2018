@@ -12,13 +12,16 @@ public class BulletController : MonoBehaviour
 		GetComponent<Rigidbody2D>().velocity = transform.right * speed;
 	}
 
-	void OnCollisionEnter2D (Collision2D collision)
+	void OnCollisionEnter2D(Collision2D collision)
 	{
 		if (collision.collider.tag == "Player")
 		{
 			collision.collider.GetComponent<PlayerController>().health -= Mathf.RoundToInt(damage);
 		}
 
-		Destroy(gameObject);
+		if (!gameObject.name.Contains("laser"))
+		{
+			Destroy(gameObject);
+		}
 	}
 }

@@ -163,7 +163,7 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator StopGhosting()
 	{
-		yield return new WaitForSeconds(0.2f);
+		yield return new WaitForSeconds(0.1f);
 
 		gameObject.layer = DEFAULT_LAYER;
 	}

@@ -7,12 +7,14 @@ public class GunController : MonoBehaviour
 	public Sprite[] guns;
 
 	public GameObject bullet;
+	public GameObject laser;
 
 	public float fireRate;
 	public float accuracy;
 	public int bullets;
 	public float damage;
 	public float bulletSpeed;
+	public bool railgun;
 
 	private SpriteRenderer spriteRenderer;
 	private Transform playerTransform;
@@ -66,7 +68,9 @@ public class GunController : MonoBehaviour
             if (spread < 0f) spread = 0f;
 			for (int i = 0; i < bullets; i++)
 			{
-				GameObject newBullet = Instantiate(bullet);
+				GameObject newBullet;
+				if (!railgun) newBullet = Instantiate(bullet);
+				else newBullet = Instantiate(laser);
 				newBullet.transform.rotation = transform.rotation;
 				newBullet.transform.position = transform.position;
 				newBullet.transform.Translate(0.75f * playerTransform.localScale.y, 0f, 0f);
@@ -128,7 +132,8 @@ public class GunController : MonoBehaviour
 					accuracy = 15;
 					bullets = 1;
 					damage = 5;
-					bulletSpeed = 100;
+					bulletSpeed = 0;
+					railgun = true;
 					spriteRenderer.sprite = guns[4];
 					break;
 				case "Rifle":

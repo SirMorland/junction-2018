@@ -134,9 +134,9 @@ public class SelectionManager : MonoBehaviour {
                         rightP.hasDash = true;
                         break;
                     case "FireDamage":
-                        leftP.fireRateMod *= 2.0f;
+                        leftP.fireRateMod *= 0.5f;
                         leftP.damageMod *= 0.5f;
-                        rightP.fireRateMod *= 0.5f;
+                        rightP.fireRateMod *= 2.0f;
                         rightP.damageMod *= 2.0f;
                         break;
                     case "AccuracySpeed":
