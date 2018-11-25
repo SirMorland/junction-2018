@@ -36,6 +36,6 @@ public class PlayerStats : MonoBehaviour {
     public bool isSmart = false;
     public bool isDumb = false;
 
-    
-
+	//Score
+	public int score = 0;
 }

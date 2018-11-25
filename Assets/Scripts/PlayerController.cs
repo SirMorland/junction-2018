@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 using UnityEngine.SceneManagement;
 
 public class PlayerController : MonoBehaviour
@@ -29,7 +30,11 @@ public class PlayerController : MonoBehaviour
     public float dashForce;
     public bool canDash = false;
 	private DashState dashState = DashState.CAN_DASH;
-    
+
+	public Text score;
+	private PlayerStats enemyStats;
+
+
 	private Vector2 BELOW = new Vector2(0f, -0.01f);
 
 	const int DEFAULT_LAYER = 0;
@@ -39,6 +44,18 @@ public class PlayerController : MonoBehaviour
 	{
 		rigidbody2d = GetComponent<Rigidbody2D>();
 		animator = GetComponent<Animator>();
+		GameObject scoreObject = GameObject.Find("Score-" + player);
+		if(scoreObject != null) score = scoreObject.GetComponent<Text>();
+
+		GameObject enemyStatObject = GameObject.Find("Stats-" + ((player % 2) + 1));
+		if(enemyStatObject != null)
+		{
+			enemyStats = enemyStatObject.GetComponent<PlayerStats>();
+		}
+		else
+		{
+			enemyStats = gameObject.AddComponent<PlayerStats>();
+		}
 
 		SetStats();
 
@@ -89,8 +106,6 @@ public class PlayerController : MonoBehaviour
 
         if(Input.GetAxis("Dash-" + player) != 0 && canDash && dashState == DashState.CAN_DASH)
         {
-			Debug.Log(Input.GetAxis("Dash-" + player));
-
             dashState = DashState.DASHING;
             rigidbody2d.AddForce(
 				new Vector2(dashForce * -Mathf.Sign(Input.GetAxis("Dash-" + player)), 0f),
@@ -127,7 +142,7 @@ public class PlayerController : MonoBehaviour
 			rigidbody2d.gravityScale = mass * fallMultiplier;
 		}
 
-		if (!grounded && Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.01f))
+		if (!grounded && Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.03f))
 		{
 			grounded = true;
 			doubleJump = canDoubleJump;
@@ -135,7 +150,7 @@ public class PlayerController : MonoBehaviour
 			rigidbody2d.gravityScale = mass;
 			animator.SetBool("Jumping", false);
 		}
-		if (grounded && !Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.01f))
+		if (grounded && !Physics2D.Raycast((Vector2)transform.position + BELOW, Vector2.down, 0.03f))
 		{
 			grounded = false;
 			animator.SetBool("Jumping", true);
@@ -158,6 +173,8 @@ public class PlayerController : MonoBehaviour
 			canJump = !playerStats.hasNoJump;
 			invertVertical = playerStats.invertVertical;
 			invertHorizontal = playerStats.invertHorizontal;
+
+			score.text = playerStats.score.ToString();
 		}
 	}
 
@@ -182,12 +199,23 @@ public class PlayerController : MonoBehaviour
 
 	IEnumerator EndRound()
 	{
-		Destroy(GameObject.Find("Stats-1"));
-		Destroy(GameObject.Find("Stats-2"));
-
 		yield return new WaitForSeconds(4f);
 
-		SceneManager.LoadScene(0);
+		enemyStats.score++;
+
+		Debug.Log(enemyStats.score);
+
+		if (enemyStats.score < 2)
+		{
+			SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex);
+		}
+		else
+		{
+			Destroy(GameObject.Find("Stats-1"));
+			Destroy(GameObject.Find("Stats-2"));
+			
+			SceneManager.LoadScene("Player" + ((player % 2) + 1));
+		}
 	}
 
 	enum DashState
