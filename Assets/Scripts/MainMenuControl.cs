@@ -3,12 +3,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class MainMenuControl : MonoBehaviour {
 
     [SerializeField] private GameObject start;
     [SerializeField] private GameObject controls;
     [SerializeField] private EventSystem eventSys;
+
+    [SerializeField] private List<GameObject> controlScreen;
+    [SerializeField] private List<GameObject> controlTexts;
+    private bool showingControls = false;
 
     private float direction = 0f;
 
@@ -26,14 +31,37 @@ public class MainMenuControl : MonoBehaviour {
         {
             GameObject selected = eventSys.currentSelectedGameObject;
 
-            if (selected == start) SceneManager.LoadScene("CardSelection");
+            if (showingControls)
+            {
+                foreach (GameObject c in controlScreen)
+                {
+                    c.GetComponent<Image>().enabled = false;
+                }
+                foreach (GameObject c in controlTexts)
+                {
+                    c.GetComponent<Text>().enabled = false;
+                }
+                showingControls = false;
+            }
+            else if (selected == start)
+            {
+                SceneManager.LoadScene("CardSelection");
+            }
             else if (selected == controls)
             {
-
+                foreach (GameObject c in controlScreen)
+                {
+                    c.GetComponent<Image>().enabled = true;
+                }
+                foreach (GameObject c in controlTexts)
+                {
+                    c.GetComponent<Text>().enabled = true;
+                }
+                showingControls = true;
             }
         }
 
-        if (direction < 0) eventSys.SetSelectedGameObject(start);
-        else if (direction > 0) eventSys.SetSelectedGameObject(controls);
+        if (direction < 0 && !showingControls) eventSys.SetSelectedGameObject(start);
+        else if (direction > 0 && !showingControls) eventSys.SetSelectedGameObject(controls);
     }
 }
