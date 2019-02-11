@@ -34,6 +34,8 @@ public class GunController : MonoBehaviour
 	
 	void Update ()
 	{
+
+		/*
 		float horizontal = Input.GetAxis("Look-Horizontal-" + player);
 		float vertical = -Input.GetAxis("Look-Vertical-" + player);
 
@@ -60,6 +62,7 @@ public class GunController : MonoBehaviour
 		{
 			spriteRenderer.flipX = true;
 		}
+		*/
 
 		float currentTime = Time.time;
 		if(Input.GetButton("Shoot-" + player) && currentTime - lastTime > fireRate)
@@ -73,7 +76,10 @@ public class GunController : MonoBehaviour
 				else newBullet = Instantiate(laser);
 				newBullet.transform.rotation = transform.rotation;
 				newBullet.transform.position = transform.position;
-				newBullet.transform.Translate(0.75f * playerTransform.localScale.y, 0f, 0f);
+
+				newBullet.transform.Translate(0.75f * playerTransform.localScale.x, 0f, 0f);
+
+				if (playerTransform.localScale.x < 0) newBullet.transform.Rotate(0f, 0f, 180f);
 				newBullet.transform.Rotate(0f, 0f, Random.Range(-spread, spread));
 
 				BulletController bc = newBullet.GetComponent<BulletController>();
