@@ -10,13 +10,13 @@ public class MainMenuItem : MonoBehaviour, ISelectHandler, IDeselectHandler
 
     public void OnSelect(BaseEventData eventData)
     {
-        Text text = gameObject.GetComponent<Text>();
+        Text text = this.GetComponentInChildren<Text>();
         text.text = "> " + defaultText;
     }
 
     public void OnDeselect(BaseEventData eventData)
     {
-        Text text = gameObject.GetComponent<Text>();
+        Text text = this.GetComponentInChildren<Text>();
         text.text = "  " + defaultText;
     }
 }

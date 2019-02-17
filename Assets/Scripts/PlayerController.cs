@@ -213,8 +213,14 @@ public class PlayerController : MonoBehaviour
 		{
 			Destroy(GameObject.Find("Stats-1"));
 			Destroy(GameObject.Find("Stats-2"));
-			
-			SceneManager.LoadScene("Player" + ((player % 2) + 1));
+
+            StatSaver stats = GameObject.Find("StatManager").GetComponent<StatSaver>();
+            stats.statData.gamesPlayed += 1;
+            if (player == 1) stats.statData.p2Wins += 1;
+            else stats.statData.p1Wins += 1;
+            stats.Save();
+
+            SceneManager.LoadScene("Player" + ((player % 2) + 1));
 		}
 	}
 

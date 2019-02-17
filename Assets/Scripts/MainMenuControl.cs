@@ -9,23 +9,28 @@ public class MainMenuControl : MonoBehaviour {
 
     [SerializeField] private GameObject start;
     [SerializeField] private GameObject controls;
+    [SerializeField] private GameObject stats;
+    [SerializeField] private GameObject exit;
     [SerializeField] private EventSystem eventSys;
+    [SerializeField] private GameObject selectedObject;
 
     [SerializeField] private List<GameObject> controlScreen;
     [SerializeField] private List<GameObject> controlTexts;
     private bool showingControls = false;
+
+    [SerializeField] private List<GameObject> statScreen;
+    [SerializeField] private List<GameObject> statTexts;
+    private bool showingStats = false;
 
     private float direction = 0f;
 
     // Use this for initialization
     void Start () {
         eventSys.SetSelectedGameObject(start);
-        
     }
 	
 	// Update is called once per frame
 	void Update () {
-        direction = Input.GetAxis("Vertical-1");
 
         if (Input.GetButtonDown("SelectCard-1"))
         {
@@ -43,9 +48,30 @@ public class MainMenuControl : MonoBehaviour {
                 }
                 showingControls = false;
             }
+            else if (showingStats)
+            {
+                foreach (GameObject c in statScreen)
+                {
+                    c.GetComponent<Image>().enabled = false;
+                }
+                foreach (GameObject c in statTexts)
+                {
+                    c.GetComponent<Text>().enabled = false;
+                }
+                showingStats = false;
+            }
             else if (selected == start)
             {
+                GameObject.Find("StatManager").GetComponent<StatSaver>().Load();
                 SceneManager.LoadScene("CardSelection");
+            }
+            else if (selected == exit)
+            {
+#if UNITY_EDITOR
+                UnityEditor.EditorApplication.isPlaying = false;
+#else
+                Application.Quit();
+#endif
             }
             else if (selected == controls)
             {
@@ -59,9 +85,36 @@ public class MainMenuControl : MonoBehaviour {
                 }
                 showingControls = true;
             }
+            else if (selected == stats)
+            {
+                StatSaver stats = GameObject.Find("StatManager").GetComponent<StatSaver>();
+                stats.Load();
+                GameObject.Find("Pelit").GetComponent<Text>().text = stats.statData.gamesPlayed.ToString();
+                GameObject.Find("P1W").GetComponent<Text>().text = stats.statData.p1Wins.ToString();
+                GameObject.Find("P2W").GetComponent<Text>().text = stats.statData.p2Wins.ToString();
+
+                foreach (GameObject c in statScreen)
+                {
+                    c.GetComponent<Image>().enabled = true;
+                }
+                foreach (GameObject c in statTexts)
+                {
+                    c.GetComponent<Text>().enabled = true;
+                }
+                showingStats = true;
+            }
         }
 
-        if (direction < 0 && !showingControls) eventSys.SetSelectedGameObject(start);
-        else if (direction > 0 && !showingControls) eventSys.SetSelectedGameObject(controls);
+        /*
+        if (direction == -1 && !showingControls && mId > 0)
+        {
+            mId--;
+            eventSys.SetSelectedGameObject(menu[mId]);
+        }
+        else if (direction == 1 && !showingControls && mId < menu.Length-1)
+        {
+            mId++;
+            eventSys.SetSelectedGameObject(menu[mId]);
+        } */
     }
 }

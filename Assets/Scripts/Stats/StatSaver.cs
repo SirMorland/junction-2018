@@ -21,9 +21,13 @@ public class StatSaver : MonoBehaviour {
         }
 
         DontDestroyOnLoad(this.gameObject);
+
+        string folderPath = Path.Combine(Application.persistentDataPath, folderName);
+        if (!Directory.Exists(folderPath))
+            Directory.CreateDirectory(folderPath);
     }
 
-    void Save()
+    public void Save()
     {
         string folderPath = Path.Combine(Application.persistentDataPath, folderName);
         if (!Directory.Exists(folderPath))
@@ -33,7 +37,7 @@ public class StatSaver : MonoBehaviour {
         SaveStats(statData, dataPath);
     }
 
-    void Load()
+    public void Load()
     {
         string[] filePaths = GetFilePaths();
 
