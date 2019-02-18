@@ -40,6 +40,10 @@ public class PlayerController : MonoBehaviour
 	const int DEFAULT_LAYER = 0;
 	const int GHOST_LAYER = 8;
 
+    //private float inputWindow = 2f / 30f;
+    //private float downTime;
+    //private float jumpTime;
+
 	void Start ()
 	{
 		rigidbody2d = GetComponent<Rigidbody2D>();
@@ -84,7 +88,19 @@ public class PlayerController : MonoBehaviour
 			animator.SetBool("Running", false);
 		}
 
-		if(((Input.GetButtonDown("Jump-" + player) && !invertVertical) || (Input.GetAxis("Vertical-" + player) > 0.5f && invertVertical)) &&
+        if (((Input.GetAxis("Vertical-" + player) > 0.5f && !invertVertical) || (Input.GetButtonDown("Jump-" + player) && invertVertical)) &&
+            grounded)
+        {
+            if (Input.GetButtonDown("Jump-" + player))
+            {
+                gameObject.layer = GHOST_LAYER;
+                grounded = false;
+                StartCoroutine(StopGhosting());
+            }
+
+
+        }
+        else if (((Input.GetButtonDown("Jump-" + player) && !invertVertical) || (Input.GetAxis("Vertical-" + player) > 0.5f && invertVertical)) &&
 			(canJump && (grounded || doubleJump)))
 		{
 			rigidbody2d.velocity = new Vector2(rigidbody2d.velocity.x, 0f);
@@ -99,9 +115,14 @@ public class PlayerController : MonoBehaviour
 		if(((Input.GetAxis("Vertical-" + player) > 0.5f && !invertVertical) || (Input.GetButtonDown("Jump-" + player) && invertVertical)) &&
 			grounded)
 		{
-			gameObject.layer = GHOST_LAYER;
-			grounded = false;
-			StartCoroutine(StopGhosting());
+            if(Input.GetButtonDown("Jump-" + player))
+            {
+                gameObject.layer = GHOST_LAYER;
+                grounded = false;
+                StartCoroutine(StopGhosting());
+            }
+
+			
 		}
 
         if(Input.GetAxis("Dash-" + player) != 0 && canDash && dashState == DashState.CAN_DASH)
